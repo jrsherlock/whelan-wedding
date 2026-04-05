@@ -1,0 +1,40 @@
+:root {
+  /* ─── Colors ─── */
+  --color-navy-deep: #0A1128;
+  --color-navy-mid: #0F172A;
+  --color-navy-light: #162040;
+  --color-cream: #FDFBF7;
+  --color-cream-muted: #F3EFE0;
+  --color-cream-dim: rgba(253, 251, 247, 0.5);
+  --color-gold: #D4AF37;
+  --color-gold-soft: #C5A059;
+  --color-gold-glow: rgba(212, 175, 55, 0.3);
+  --color-gold-border: rgba(212, 175, 55, 0.2);
+  --color-error: #C5785A;
+
+  /* ─── Typography ─── */
+  --font-script: 'Pinyon Script', cursive;
+  --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+  /* ─── Spacing ─── */
+  --space-xs: 0.4rem;
+  --space-sm: 0.8rem;
+  --space-md: 1.6rem;
+  --space-lg: 2.4rem;
+  --space-xl: 4rem;
+  --space-2xl: 6.4rem;
+  --space-3xl: 9.6rem;
+
+  /* ─── Layout ─── */
+  --nav-height: 72px;
+  --content-max: 1080px;
+  --content-wide: 1200px;
+  --content-narrow: 720px;
+
+  /* ─── Transitions ─── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 0.2s var(--ease-out);
+  --transition-base: 0.35s var(--ease-out);
+  --transition-slow: 0.6s var(--ease-out);
+}

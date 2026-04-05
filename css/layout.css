@@ -1,0 +1,243 @@
+/* ─── Navigation ─── */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  background: transparent;
+  transition: background var(--transition-base), box-shadow var(--transition-base);
+}
+
+.site-nav.scrolled {
+  background: rgba(10, 17, 40, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--color-gold-border);
+}
+
+.nav-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  letter-spacing: 0.12em;
+  color: var(--color-cream);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.nav-logo:hover {
+  color: var(--color-gold);
+}
+
+.nav-ampersand {
+  font-family: var(--font-script);
+  font-size: 2.4rem;
+  color: var(--color-gold);
+  margin: 0 0.2em;
+}
+
+.nav-menu {
+  display: flex;
+  gap: var(--space-xl);
+}
+
+.nav-menu a {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cream-muted);
+  text-decoration: none;
+  position: relative;
+  padding: var(--space-xs) 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: width var(--transition-base);
+}
+
+.nav-menu a:hover {
+  color: var(--color-gold);
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+/* ─── Mobile Nav Toggle ─── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  z-index: 1010;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-cream);
+  transition: transform var(--transition-base), opacity var(--transition-fast);
+}
+
+body.menu-open .nav-toggle-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+body.menu-open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+body.menu-open .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ─── Mobile Menu Overlay ─── */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10, 17, 40, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+body.menu-open .mobile-menu-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-links {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.mobile-menu-links a {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  color: var(--color-cream);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: color var(--transition-fast);
+}
+
+.mobile-menu-links a:hover {
+  color: var(--color-gold);
+}
+
+/* ─── Sections ─── */
+.section {
+  padding: var(--space-3xl) var(--space-lg);
+  position: relative;
+}
+
+.section--alt {
+  background: var(--color-navy-mid);
+}
+
+.section-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Wider container for sections that benefit from more width */
+.section-inner--wide {
+  max-width: var(--content-wide);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.section-title-text {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--color-cream);
+}
+
+.section-subtitle {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+/* ─── Gold Rule Divider ─── */
+.gold-rule {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: var(--space-md) auto;
+  opacity: 0.6;
+}
+
+/* ─── Section Ornamental Corners — hidden, no longer used ─── */
+.section-ornament {
+  display: none;
+}
+
+/* ─── Footer ─── */
+.site-footer {
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  border-top: 1px solid var(--color-gold-border);
+}
+
+.footer-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.footer-names {
+  font-size: 3.2rem;
+  color: var(--color-cream);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-date {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-md);
+}
+
+.footer-made {
+  font-size: 1.2rem;
+  color: var(--color-cream-dim);
+  letter-spacing: 0.08em;
+}

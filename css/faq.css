@@ -1,0 +1,78 @@
+/* ─── FAQ List ─── */
+.faq-list {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ─── FAQ Item ─── */
+.faq-item {
+  border-bottom: 1px solid var(--color-gold-border);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--color-gold-border);
+}
+
+/* ─── Question (Summary) ─── */
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) 0;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--color-cream);
+  letter-spacing: 0.02em;
+  transition: color var(--transition-fast);
+  list-style: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::marker {
+  display: none;
+  content: '';
+}
+
+/* Plus/Minus Indicator */
+.faq-question::after {
+  content: '+';
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-gold);
+  margin-left: var(--space-lg);
+  transition: transform var(--transition-base);
+}
+
+.faq-item[open] .faq-question::after {
+  content: '\2212'; /* minus sign */
+}
+
+.faq-question:hover {
+  color: var(--color-gold);
+}
+
+/* ─── Answer ─── */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-slow);
+}
+
+.faq-item[open] .faq-answer {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer > p {
+  overflow: hidden;
+  padding: 0 0 var(--space-lg);
+  font-size: 1.45rem;
+  color: var(--color-cream-muted);
+  line-height: 1.8;
+}

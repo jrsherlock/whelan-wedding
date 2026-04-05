@@ -1,0 +1,228 @@
+/* ═══════════════════════════════════════════ */
+/* LARGE DESKTOP — min-width: 1200px          */
+/* ═══════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .hero-names .script-text {
+    font-size: 9rem;
+  }
+
+  .hero-ampersand {
+    font-size: 4rem;
+  }
+
+  .hero-date {
+    font-size: 2.4rem;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-message {
+    font-size: 2rem;
+  }
+
+  .section-title-text {
+    font-size: 4.4rem;
+  }
+
+  .rsvp-subtitle {
+    font-size: 1.8rem;
+  }
+
+  .footer-names {
+    font-size: 3.6rem;
+  }
+}
+
+/* ═══════════════════════════════════════════ */
+/* TABLET — max-width: 1024px                 */
+/* ═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .section-title-text {
+    font-size: 3.2rem;
+  }
+
+  .hero-names .script-text {
+    font-size: 6.5rem;
+  }
+
+  /* Collapse alternating timeline to single column */
+  .timeline {
+    max-width: 600px;
+  }
+
+  .timeline::before {
+    left: 8px;
+    transform: none;
+  }
+
+  .timeline-event,
+  .timeline-event:nth-child(odd),
+  .timeline-event:nth-child(even) {
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+    padding: 0 0 var(--space-2xl) var(--space-2xl);
+    padding-right: 0;
+  }
+
+  .timeline-event:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-marker,
+  .timeline-event:nth-child(odd) .timeline-marker,
+  .timeline-event:nth-child(even) .timeline-marker {
+    left: 0;
+    right: auto;
+  }
+
+  .timeline-event:nth-child(odd)::after,
+  .timeline-event:nth-child(even)::after {
+    display: none;
+  }
+
+  .timeline-event:not(:last-child) .timeline-info::after {
+    text-align: left;
+  }
+
+  /* Hide section ornaments */
+  .section-ornament {
+    display: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════ */
+/* MOBILE — max-width: 768px                  */
+/* ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 60px;
+  }
+
+  /* Nav */
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Hero */
+  .hero-names .script-text {
+    font-size: 5rem;
+  }
+
+  .hero-ampersand {
+    font-size: 2.4rem;
+  }
+
+  .hero-date {
+    font-size: 1.7rem;
+  }
+
+  .hero-message {
+    font-size: 1.5rem;
+  }
+
+  .hero-prelude {
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .section-inner {
+    padding: 0;
+  }
+
+  .section-title-text {
+    font-size: 2.6rem;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding-left: 32px;
+  }
+
+  .timeline-event-name {
+    font-size: 2.2rem;
+  }
+
+  /* RSVP */
+  .rsvp-form {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+
+  .attendance-options {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .attendance-pill .pill-label {
+    padding: var(--space-md) var(--space-sm);
+    font-size: 1.35rem;
+  }
+
+  .dietary-options {
+    gap: var(--space-sm);
+  }
+
+  /* Travel */
+  .travel-placeholder {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+
+  /* FAQ */
+  .faq-question {
+    font-size: 1.6rem;
+    padding: var(--space-md) 0;
+  }
+
+  /* Footer */
+  .footer-names {
+    font-size: 2.6rem;
+  }
+}
+
+/* ═══════════════════════════════════════════ */
+/* SMALL MOBILE — max-width: 480px            */
+/* ═══════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero-names .script-text {
+    font-size: 4rem;
+  }
+
+  .hero-ampersand {
+    font-size: 2rem;
+  }
+
+  .hero-content {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .section-title-text {
+    font-size: 2.2rem;
+  }
+
+  .timeline-event-name {
+    font-size: 1.9rem;
+  }
+
+  .attendance-pill .pill-label {
+    font-size: 1.2rem;
+    padding: var(--space-sm);
+  }
+
+  .placeholder-heading {
+    font-size: 2.2rem;
+  }
+
+  .mobile-menu-links a {
+    font-size: 2.6rem;
+  }
+}

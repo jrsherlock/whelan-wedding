@@ -1,0 +1,150 @@
+/* ─── Details Section: Desktop Editorial Layout ─── */
+
+/* ─── Timeline: Centered Vertical Layout ─── */
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Center vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--color-gold-border), var(--color-gold), var(--color-gold-border), transparent);
+}
+
+/* ─── Timeline Event: Alternating Left/Right ─── */
+.timeline-event {
+  position: relative;
+  width: 50%;
+  padding: 0 var(--space-2xl) var(--space-3xl) 0;
+}
+
+.timeline-event:last-child {
+  padding-bottom: 0;
+}
+
+/* Odd events: left side */
+.timeline-event:nth-child(odd) {
+  text-align: right;
+  padding-right: var(--space-2xl);
+  padding-left: 0;
+}
+
+/* Even events: right side */
+.timeline-event:nth-child(even) {
+  margin-left: 50%;
+  text-align: left;
+  padding-left: var(--space-2xl);
+  padding-right: 0;
+}
+
+/* ─── Dot Marker: Centered on the line ─── */
+.timeline-marker {
+  position: absolute;
+  top: 4px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-gold);
+  background: var(--color-navy-mid);
+  z-index: 2;
+}
+
+.timeline-event:nth-child(odd) .timeline-marker {
+  right: calc(-8.5px - 0.5px);
+}
+
+.timeline-event:nth-child(even) .timeline-marker {
+  left: calc(-8.5px - 0.5px);
+}
+
+.timeline-marker::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  opacity: 0.5;
+}
+
+/* ─── Connecting Arms from marker to content ─── */
+.timeline-event:nth-child(odd)::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 0;
+  width: var(--space-xl);
+  height: 1px;
+  background: var(--color-gold-border);
+}
+
+.timeline-event:nth-child(even)::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: var(--space-xl);
+  height: 1px;
+  background: var(--color-gold-border);
+}
+
+/* ─── Time ─── */
+.timeline-time {
+  margin-bottom: var(--space-sm);
+}
+
+.timeline-hour {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* ─── Event Info ─── */
+.timeline-event-name {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--color-cream);
+  margin-bottom: var(--space-sm);
+  line-height: 1.2;
+}
+
+.timeline-venue {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--color-cream-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.timeline-address {
+  font-size: 1.35rem;
+  color: var(--color-cream-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.timeline-note {
+  font-size: 1.35rem;
+  color: var(--color-cream-dim);
+  font-style: italic;
+}
+
+/* ─── Decorative detail: ornament between events ─── */
+.timeline-event:not(:last-child) .timeline-info::after {
+  content: '✦';
+  display: block;
+  margin-top: var(--space-lg);
+  font-size: 0.9rem;
+  color: var(--color-gold);
+  opacity: 0.3;
+}

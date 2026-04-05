@@ -1,0 +1,115 @@
+/* ─── Travel Placeholder ─── */
+.travel-placeholder {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--space-3xl) var(--space-2xl);
+  border: 1px solid var(--color-gold-border);
+  border-radius: 2px;
+  background: rgba(15, 23, 42, 0.4);
+  position: relative;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+.placeholder-icon {
+  font-size: 2.4rem;
+  color: var(--color-gold);
+  margin-bottom: var(--space-lg);
+  opacity: 0.6;
+}
+
+.placeholder-heading {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--color-cream);
+  margin-bottom: var(--space-md);
+}
+
+.placeholder-text {
+  font-size: 1.5rem;
+  color: var(--color-cream-muted);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto var(--space-lg);
+}
+
+.placeholder-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: var(--space-lg) auto;
+  opacity: 0.4;
+}
+
+.placeholder-subtext {
+  font-size: 1.35rem;
+  color: var(--color-cream-dim);
+  line-height: 1.8;
+}
+
+/* ─── Hotel Grid (hidden by default when placeholder is active) ─── */
+.placeholder-active .hotel-grid {
+  display: none;
+}
+
+.placeholder-active .travel-placeholder {
+  display: block;
+}
+
+/* When placeholder-active is removed, show hotel grid, hide placeholder */
+.travel-content:not(.placeholder-active) .travel-placeholder {
+  display: none;
+}
+
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.hotel-card {
+  padding: var(--space-xl);
+  border-top: 2px solid var(--color-gold);
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.hotel-name {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--color-cream);
+  margin-bottom: var(--space-md);
+}
+
+.hotel-address,
+.hotel-block,
+.hotel-rate,
+.hotel-deadline {
+  font-size: 1.35rem;
+  color: var(--color-cream-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.hotel-book-btn {
+  display: inline-block;
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-xl);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-navy-deep);
+  background: var(--color-gold);
+  text-decoration: none;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hotel-book-btn:hover {
+  background: var(--color-gold-soft);
+  color: var(--color-navy-deep);
+  box-shadow: 0 0 20px var(--color-gold-glow);
+}
