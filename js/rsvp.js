@@ -41,6 +41,9 @@ export function initRSVP() {
     });
   }
 
+  // ─── Bot detection: track when page loaded ───
+  const loadedAt = Date.now();
+
   // ─── Form submission ───
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -54,6 +57,9 @@ export function initRSVP() {
     // Check honeypot
     const honeypot = form.querySelector('[name="_gotcha"]');
     if (honeypot && honeypot.value) return;
+
+    // Reject suspiciously fast submissions (< 3 seconds)
+    if (Date.now() - loadedAt < 3000) return;
 
     // Show loading state
     submitBtn.classList.add('loading');
