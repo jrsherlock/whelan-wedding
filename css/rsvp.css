@@ -137,8 +137,16 @@
   line-height: 1.5;
 }
 
-/* ─── Select Field ─── */
-.form-field select {
+/* ─── Custom Select ─── */
+.custom-select {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: var(--space-md) 0 var(--space-sm);
   background: transparent;
@@ -148,23 +156,75 @@
   font-family: var(--font-serif);
   font-size: 2.4rem;
   font-weight: 400;
-  outline: none;
   cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23D4B062' stroke-width='1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 4px center;
+  outline: none;
   transition: border-color var(--transition-fast);
 }
 
-.form-field select:focus {
+.custom-select-trigger:focus {
   border-bottom-color: var(--color-gold);
 }
 
-.form-field select option {
-  background: var(--color-navy-deep);
-  color: var(--color-cream);
+.custom-select-value {
+  opacity: 0.48;
+  transition: opacity var(--transition-fast);
+}
+
+.custom-select.has-value .custom-select-value {
+  opacity: 1;
+}
+
+.custom-select-arrow {
+  color: var(--color-gold);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.custom-select.open .custom-select-arrow {
+  transform: rotate(180deg);
+}
+
+.custom-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: var(--space-xs) 0 0;
+  padding: var(--space-xs) 0;
+  list-style: none;
+  background: linear-gradient(180deg, #131C39 0%, #0B1227 100%);
+  border: 1px solid var(--color-gold-border);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+}
+
+.custom-select.open .custom-select-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.custom-select-options li {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--color-cream-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.custom-select-options li:hover {
+  color: var(--color-gold);
+  background: rgba(212, 176, 98, 0.08);
+}
+
+.custom-select-options li.selected {
+  color: var(--color-gold);
 }
 
 /* ─── Fieldsets ─── */

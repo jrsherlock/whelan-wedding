@@ -41,6 +41,40 @@ export function initRSVP() {
     });
   }
 
+  // ─── Custom select (guest count) ───
+  const customSelect = document.getElementById('guest-count-select');
+  const hiddenInput = document.getElementById('guest-count');
+  if (customSelect && hiddenInput) {
+    const trigger = customSelect.querySelector('.custom-select-trigger');
+    const valueDisplay = customSelect.querySelector('.custom-select-value');
+    const options = customSelect.querySelectorAll('.custom-select-options li');
+
+    trigger.addEventListener('click', () => {
+      customSelect.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', customSelect.classList.contains('open'));
+    });
+
+    options.forEach(opt => {
+      opt.addEventListener('click', () => {
+        hiddenInput.value = opt.dataset.value;
+        valueDisplay.textContent = opt.textContent;
+        customSelect.classList.add('has-value');
+        customSelect.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        options.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!customSelect.contains(e.target)) {
+        customSelect.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   // ─── Bot detection: track when page loaded ───
   const loadedAt = Date.now();
 

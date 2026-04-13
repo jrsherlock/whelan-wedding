@@ -518,13 +518,21 @@
           <!-- Number of Guests -->
           <div class="form-group">
             <div class="form-field">
-              <select id="guest-count" name="guest_count" required>
-                <option value="" disabled selected>Number of Guests</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
+              <input type="hidden" id="guest-count" name="guest_count">
+              <div class="custom-select" id="guest-count-select">
+                <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="custom-select-value">Number of Guests</span>
+                  <svg class="custom-select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                </button>
+                <ul class="custom-select-options" role="listbox">
+                  <li role="option" data-value="1">1</li>
+                  <li role="option" data-value="2">2</li>
+                  <li role="option" data-value="3">3</li>
+                  <li role="option" data-value="4">4</li>
+                </ul>
+              </div>
               <span class="form-error" id="count-error"></span>
             </div>
           </div>
