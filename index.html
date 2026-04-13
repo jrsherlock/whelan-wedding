@@ -515,28 +515,6 @@
             </div>
           </div>
 
-          <!-- Number of Guests -->
-          <div class="form-group">
-            <div class="form-field">
-              <input type="hidden" id="guest-count" name="guest_count">
-              <div class="custom-select" id="guest-count-select">
-                <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="custom-select-value">Number of Guests</span>
-                  <svg class="custom-select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                    <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5"/>
-                  </svg>
-                </button>
-                <ul class="custom-select-options" role="listbox">
-                  <li role="option" data-value="1">1</li>
-                  <li role="option" data-value="2">2</li>
-                  <li role="option" data-value="3">3</li>
-                  <li role="option" data-value="4">4</li>
-                </ul>
-              </div>
-              <span class="form-error" id="count-error"></span>
-            </div>
-          </div>
-
           <!-- Attendance -->
           <fieldset class="form-group attendance-group">
             <legend class="form-legend">Will you be attending?</legend>
@@ -553,47 +531,74 @@
             <span class="form-error" id="attendance-error"></span>
           </fieldset>
 
-          <!-- Dietary Restrictions -->
-          <fieldset class="form-group dietary-group">
-            <legend class="form-legend">Dietary Restrictions</legend>
-            <div class="dietary-options">
-              <label class="dietary-pill">
-                <input type="checkbox" name="dietary" value="vegetarian">
-                <span class="pill-label">Vegetarian</span>
-              </label>
-              <label class="dietary-pill">
-                <input type="checkbox" name="dietary" value="vegan">
-                <span class="pill-label">Vegan</span>
-              </label>
-              <label class="dietary-pill">
-                <input type="checkbox" name="dietary" value="gluten-free">
-                <span class="pill-label">Gluten-Free</span>
-              </label>
-              <label class="dietary-pill">
-                <input type="checkbox" name="dietary" value="dairy-free">
-                <span class="pill-label">Dairy-Free</span>
-              </label>
-              <label class="dietary-pill">
-                <input type="checkbox" name="dietary" value="nut-allergy">
-                <span class="pill-label">Nut Allergy</span>
-              </label>
-              <label class="dietary-pill">
-                <input type="checkbox" name="dietary" value="other" id="dietary-other-check">
-                <span class="pill-label">Other</span>
-              </label>
-            </div>
-            <div class="dietary-other-field" id="dietary-other-field">
-              <input type="text" id="dietary-other-text" name="dietary_other" placeholder="Please specify..." maxlength="100">
-            </div>
-          </fieldset>
+          <!-- Sections shown only when accepting -->
+          <div id="attending-details" class="attending-details">
 
-          <!-- Message -->
-          <div class="form-group message-group">
+            <!-- Number of Guests -->
+            <div class="form-group">
+              <div class="form-field">
+                <input type="hidden" id="guest-count" name="guest_count">
+                <div class="custom-select" id="guest-count-select">
+                  <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="custom-select-value">Number of Guests</span>
+                    <svg class="custom-select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                      <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </button>
+                  <ul class="custom-select-options" role="listbox">
+                    <li role="option" data-value="1">1</li>
+                    <li role="option" data-value="2">2</li>
+                    <li role="option" data-value="3">3</li>
+                    <li role="option" data-value="4">4</li>
+                  </ul>
+                </div>
+                <span class="form-error" id="count-error"></span>
+              </div>
+            </div>
+
+            <!-- Dietary Restrictions -->
+            <fieldset class="form-group dietary-group">
+              <legend class="form-legend">Dietary Restrictions</legend>
+              <div class="dietary-options">
+                <label class="dietary-pill">
+                  <input type="checkbox" name="dietary" value="vegetarian">
+                  <span class="pill-label">Vegetarian</span>
+                </label>
+                <label class="dietary-pill">
+                  <input type="checkbox" name="dietary" value="vegan">
+                  <span class="pill-label">Vegan</span>
+                </label>
+                <label class="dietary-pill">
+                  <input type="checkbox" name="dietary" value="gluten-free">
+                  <span class="pill-label">Gluten-Free</span>
+                </label>
+                <label class="dietary-pill">
+                  <input type="checkbox" name="dietary" value="dairy-free">
+                  <span class="pill-label">Dairy-Free</span>
+                </label>
+                <label class="dietary-pill">
+                  <input type="checkbox" name="dietary" value="nut-allergy">
+                  <span class="pill-label">Nut Allergy</span>
+                </label>
+                <label class="dietary-pill">
+                  <input type="checkbox" name="dietary" value="other" id="dietary-other-check">
+                  <span class="pill-label">Other</span>
+                </label>
+              </div>
+              <div class="dietary-other-field" id="dietary-other-field">
+                <input type="text" id="dietary-other-text" name="dietary_other" placeholder="Please specify..." maxlength="100">
+              </div>
+            </fieldset>
+
+            <!-- Message -->
+            <div class="form-group message-group">
             <div class="form-field">
               <textarea id="guest-message" name="message" placeholder=" " rows="4" maxlength="500"></textarea>
               <label for="guest-message">Message for the couple (optional)</label>
             </div>
           </div>
+
+          </div><!-- /attending-details -->
 
           <!-- Submit -->
           <div class="form-actions">

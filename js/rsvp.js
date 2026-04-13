@@ -41,6 +41,38 @@ export function initRSVP() {
     });
   }
 
+  // ─── Attendance toggle: show/hide details ───
+  const attendingDetails = document.getElementById('attending-details');
+  const attendanceRadios = form.querySelectorAll('input[name="attendance"]');
+  attendanceRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.value === 'accepts') {
+        attendingDetails.classList.add('visible');
+      } else {
+        attendingDetails.classList.remove('visible');
+        // Clear guest count
+        const countInput = document.getElementById('guest-count');
+        if (countInput) countInput.value = '';
+        const selectEl = document.getElementById('guest-count-select');
+        if (selectEl) {
+          selectEl.classList.remove('has-value');
+          selectEl.querySelector('.custom-select-value').textContent = 'Number of Guests';
+          selectEl.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
+        }
+        // Clear dietary checkboxes
+        form.querySelectorAll('input[name="dietary"]').forEach(cb => { cb.checked = false; });
+        if (otherField) {
+          otherField.classList.remove('visible');
+          const otherInput = otherField.querySelector('input');
+          if (otherInput) otherInput.value = '';
+        }
+        // Clear message
+        const msg = document.getElementById('guest-message');
+        if (msg) msg.value = '';
+      }
+    });
+  });
+
   // ─── Custom select (guest count) ───
   const customSelect = document.getElementById('guest-count-select');
   const hiddenInput = document.getElementById('guest-count');
@@ -125,7 +157,7 @@ export function initRSVP() {
       }
 
       // Show success
-      form.querySelectorAll('.form-group, .form-actions, fieldset').forEach(el => {
+      form.querySelectorAll('.form-group, .form-actions, fieldset, .attending-details').forEach(el => {
         el.style.display = 'none';
       });
       successEl.hidden = false;
@@ -154,18 +186,20 @@ export function initRSVP() {
       valid = false;
     }
 
-    // Guest count
-    const count = form.querySelector('#guest-count');
-    if (!count.value) {
-      showError('count-error', 'Please select number of guests');
-      valid = false;
-    }
-
     // Attendance
     const attendance = form.querySelector('input[name="attendance"]:checked');
     if (!attendance) {
       showError('attendance-error', 'Please select your attendance');
       valid = false;
+    }
+
+    // Guest count (only required when accepting)
+    if (attendance && attendance.value === 'accepts') {
+      const count = form.querySelector('#guest-count');
+      if (!count.value) {
+        showError('count-error', 'Please select number of guests');
+        valid = false;
+      }
     }
 
     return valid;
