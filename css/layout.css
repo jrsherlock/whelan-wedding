@@ -11,16 +11,16 @@
 }
 
 .site-nav.scrolled {
-  background: rgba(10, 17, 40, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 var(--color-gold-border);
+  background: rgba(4, 6, 15, 0.85);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  box-shadow: 0 1px 0 var(--color-gold-border-soft), 0 20px 40px -20px rgba(0, 0, 0, 0.5);
 }
 
 .nav-inner {
-  max-width: var(--content-max);
+  max-width: var(--content-wide);
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 var(--space-xl);
   height: 100%;
   display: flex;
   align-items: center;
@@ -29,8 +29,10 @@
 
 .nav-logo {
   font-family: var(--font-serif);
-  font-size: 2rem;
-  letter-spacing: 0.12em;
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
   color: var(--color-cream);
   text-decoration: none;
   transition: color var(--transition-fast);
@@ -41,10 +43,12 @@
 }
 
 .nav-ampersand {
-  font-family: var(--font-script);
-  font-size: 2.4rem;
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 300;
   color: var(--color-gold);
-  margin: 0 0.2em;
+  margin: 0 0.25em;
 }
 
 .nav-menu {
@@ -54,9 +58,9 @@
 
 .nav-menu a {
   font-family: var(--font-body);
-  font-size: 1.15rem;
+  font-size: 1.4rem;
   font-weight: 400;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-cream-muted);
   text-decoration: none;
@@ -68,8 +72,9 @@
 .nav-menu a::after {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 0;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 1px;
   background: var(--color-gold);
@@ -120,7 +125,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(10, 17, 40, 0.96);
+  background: rgba(4, 6, 15, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
@@ -145,10 +150,11 @@ body.menu-open .mobile-menu-overlay {
 
 .mobile-menu-links a {
   font-family: var(--font-serif);
-  font-size: 3.2rem;
+  font-size: 3rem;
+  font-style: italic;
   color: var(--color-cream);
   text-decoration: none;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   transition: color var(--transition-fast);
 }
 
@@ -163,7 +169,7 @@ body.menu-open .mobile-menu-overlay {
 }
 
 .section--alt {
-  background: var(--color-navy-mid);
+  background: linear-gradient(180deg, transparent 0%, rgba(11, 18, 39, 0.6) 20%, rgba(11, 18, 39, 0.6) 80%, transparent 100%);
 }
 
 .section-inner {
@@ -172,9 +178,41 @@ body.menu-open .mobile-menu-overlay {
   padding: 0 var(--space-lg);
 }
 
-/* Wider container for sections that benefit from more width */
 .section-inner--wide {
   max-width: var(--content-wide);
+}
+
+.section-inner--narrow {
+  max-width: var(--content-narrow);
+}
+
+/* ─── Section Header (kicker + title + rule) ─── */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.section-kicker {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.section-kicker::before,
+.section-kicker::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.6;
 }
 
 .section-title {
@@ -184,10 +222,13 @@ body.menu-open .mobile-menu-overlay {
 
 .section-title-text {
   font-family: var(--font-serif);
-  font-size: 4rem;
+  font-size: 4.6rem;
   font-weight: 300;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-cream);
+  display: inline-block;
+  position: relative;
 }
 
 .section-subtitle {
@@ -198,11 +239,37 @@ body.menu-open .mobile-menu-overlay {
 /* ─── Gold Rule Divider ─── */
 .gold-rule {
   display: block;
+  width: 120px;
+  height: 1px;
+  background: var(--gradient-gold-rule);
+  margin: var(--space-md) auto var(--space-sm);
+}
+
+.gold-rule--short {
+  width: 60px;
+}
+
+/* Diamond/star ornament between two gold rules */
+.gold-ornament-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin: var(--space-md) auto;
+}
+
+.gold-ornament-rule::before,
+.gold-ornament-rule::after {
+  content: '';
   width: 60px;
   height: 1px;
-  background: var(--color-gold);
-  margin: var(--space-md) auto;
-  opacity: 0.6;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.gold-ornament-rule .ornament-mark {
+  color: var(--color-gold);
+  font-size: 1.4rem;
+  letter-spacing: 0.6em;
 }
 
 /* ─── Section Ornamental Corners — hidden, no longer used ─── */
@@ -212,9 +279,21 @@ body.menu-open .mobile-menu-overlay {
 
 /* ─── Footer ─── */
 .site-footer {
-  padding: var(--space-2xl) var(--space-lg);
+  padding: var(--space-2xl) var(--space-lg) var(--space-xl);
   text-align: center;
-  border-top: 1px solid var(--color-gold-border);
+  border-top: 1px solid var(--color-gold-border-soft);
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
 }
 
 .footer-inner {
@@ -222,22 +301,55 @@ body.menu-open .mobile-menu-overlay {
   margin: 0 auto;
 }
 
+.footer-monogram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  margin-bottom: var(--space-md);
+}
+
+.footer-monogram .amp {
+  font-style: italic;
+  color: var(--color-gold);
+  font-size: 2rem;
+}
+
 .footer-names {
-  font-size: 3.2rem;
+  font-size: 4rem;
   color: var(--color-cream);
   margin-bottom: var(--space-sm);
+  line-height: 1;
 }
 
 .footer-date {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
+  font-style: italic;
   color: var(--color-gold);
-  letter-spacing: 0.1em;
-  margin-bottom: var(--space-md);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin-bottom: var(--space-lg);
+}
+
+.footer-rule {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.5;
+  margin: 0 auto var(--space-md);
 }
 
 .footer-made {
-  font-size: 1.2rem;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
   color: var(--color-cream-dim);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }

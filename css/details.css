@@ -1,150 +1,162 @@
-/* ─── Details Section: Desktop Editorial Layout ─── */
+/* ─── Details Section: Editorial Two-Column Card Layout ─── */
 
-/* ─── Timeline: Centered Vertical Layout ─── */
-.timeline {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-}
-
-/* Center vertical line */
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, var(--color-gold-border), var(--color-gold), var(--color-gold-border), transparent);
-}
-
-/* ─── Timeline Event: Alternating Left/Right ─── */
-.timeline-event {
-  position: relative;
-  width: 50%;
-  padding: 0 var(--space-2xl) var(--space-3xl) 0;
-}
-
-.timeline-event:last-child {
-  padding-bottom: 0;
-}
-
-/* Odd events: left side */
-.timeline-event:nth-child(odd) {
-  text-align: right;
-  padding-right: var(--space-2xl);
-  padding-left: 0;
-}
-
-/* Even events: right side */
-.timeline-event:nth-child(even) {
-  margin-left: 50%;
-  text-align: left;
-  padding-left: var(--space-2xl);
-  padding-right: 0;
-}
-
-/* ─── Dot Marker: Centered on the line ─── */
-.timeline-marker {
-  position: absolute;
-  top: 4px;
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-gold);
-  background: var(--color-navy-mid);
-  z-index: 2;
-}
-
-.timeline-event:nth-child(odd) .timeline-marker {
-  right: calc(-8.5px - 0.5px);
-}
-
-.timeline-event:nth-child(even) .timeline-marker {
-  left: calc(-8.5px - 0.5px);
-}
-
-.timeline-marker::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  background: var(--color-gold);
-  opacity: 0.5;
-}
-
-/* ─── Connecting Arms from marker to content ─── */
-.timeline-event:nth-child(odd)::after {
-  content: '';
-  position: absolute;
-  top: 12px;
-  right: 0;
-  width: var(--space-xl);
-  height: 1px;
-  background: var(--color-gold-border);
-}
-
-.timeline-event:nth-child(even)::after {
-  content: '';
-  position: absolute;
-  top: 12px;
-  left: 0;
-  width: var(--space-xl);
-  height: 1px;
-  background: var(--color-gold-border);
-}
-
-/* ─── Time ─── */
-.timeline-time {
-  margin-bottom: var(--space-sm);
-}
-
-.timeline-hour {
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
-
-/* ─── Event Info ─── */
-.timeline-event-name {
-  font-family: var(--font-serif);
-  font-size: 2.8rem;
-  font-weight: 400;
-  color: var(--color-cream);
-  margin-bottom: var(--space-sm);
-  line-height: 1.2;
-}
-
-.timeline-venue {
+.details-quote {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-2xl);
   font-family: var(--font-serif);
   font-size: 1.7rem;
   font-style: italic;
   color: var(--color-cream-muted);
+  line-height: 1.7;
+}
+
+/* ─── Event Card Grid ─── */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Vertical gold rule between two events on desktop */
+.event-grid::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  bottom: 8%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--color-gold-border), var(--color-gold), var(--color-gold-border), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* ─── Event Card ─── */
+.event-card {
+  position: relative;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.event-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--space-md);
+  color: var(--color-gold);
+  filter: drop-shadow(0 0 12px rgba(233, 203, 125, 0.25));
+}
+
+.event-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.event-time {
+  font-family: var(--font-body);
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-md);
+}
+
+.event-name {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  margin-bottom: var(--space-md);
+  line-height: 1.1;
+}
+
+.event-name-rule {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 0 auto var(--space-md);
+  opacity: 0.6;
+}
+
+.event-venue {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--color-cream-soft);
   margin-bottom: var(--space-xs);
 }
 
-.timeline-address {
-  font-size: 1.35rem;
+.event-address {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-cream-dim);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
-.timeline-note {
-  font-size: 1.35rem;
-  color: var(--color-cream-dim);
+.event-note {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
   font-style: italic;
+  color: var(--color-cream-muted);
+  max-width: 280px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
-/* ─── Decorative detail: ornament between events ─── */
-.timeline-event:not(:last-child) .timeline-info::after {
-  content: '✦';
-  display: block;
-  margin-top: var(--space-lg);
-  font-size: 0.9rem;
+/* ─── Date stamp at top of details section ─── */
+.date-stamp {
+  text-align: center;
+  margin: 0 auto var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.date-stamp-day {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
   color: var(--color-gold);
-  opacity: 0.3;
+}
+
+.date-stamp-numeric {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-family: var(--font-serif);
+  font-size: 4.4rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--color-cream);
+  line-height: 1;
+}
+
+.date-stamp-numeric .sep {
+  color: var(--color-gold);
+  font-style: italic;
+  font-size: 3rem;
+  opacity: 0.7;
+}
+
+.date-stamp-loc {
+  font-family: var(--font-body);
+  font-size: 1.45rem;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-cream-dim);
+  margin-top: var(--space-sm);
 }

@@ -1,18 +1,44 @@
 /* ─── RSVP Form Container ─── */
 .rsvp-form {
-  max-width: 780px;
+  max-width: 760px;
   margin: 0 auto;
   padding: var(--space-2xl) var(--space-3xl);
   border: 1px solid var(--color-gold-border);
-  border-radius: 2px;
-  background: rgba(10, 17, 40, 0.5);
+  background:
+    linear-gradient(180deg, rgba(19, 28, 57, 0.6) 0%, rgba(11, 18, 39, 0.6) 100%);
   position: relative;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(2px);
+}
+
+/* Gold corner brackets */
+.rsvp-form::before,
+.rsvp-form::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-gold);
+  pointer-events: none;
+}
+
+.rsvp-form::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.rsvp-form::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
 }
 
 .rsvp-subtitle {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   font-style: italic;
   color: var(--color-cream-muted);
   margin-top: var(--space-sm);
@@ -32,6 +58,10 @@
   margin-bottom: var(--space-xl);
 }
 
+.message-group {
+  margin-top: var(--space-2xl);
+}
+
 /* ─── Floating Label Fields ─── */
 .form-field {
   position: relative;
@@ -43,10 +73,11 @@
   padding: var(--space-md) 0 var(--space-sm);
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--color-cream-dim);
+  border-bottom: 1px solid var(--color-cream-faint);
   color: var(--color-cream);
-  font-size: 1.5rem;
-  font-weight: 300;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
   transition: border-color var(--transition-fast);
   outline: none;
 }
@@ -56,15 +87,34 @@
   border-bottom-color: var(--color-gold);
 }
 
+/* Override browser autofill styling */
+.form-field input:-webkit-autofill,
+.form-field input:-webkit-autofill:hover,
+.form-field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-cream);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: transparent !important;
+  transition: background-color 600000s 0s, color 600000s 0s;
+  caret-color: var(--color-cream);
+}
+
+.form-field input:-webkit-autofill:focus {
+  border-bottom-color: var(--color-gold);
+}
+
 .form-field label {
   position: absolute;
   left: 0;
   top: var(--space-md);
-  font-size: 1.4rem;
-  font-weight: 300;
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--color-cream-dim);
   pointer-events: none;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   transform-origin: left;
 }
 
@@ -73,15 +123,18 @@
 .form-field input:not(:placeholder-shown) + label,
 .form-field textarea:focus + label,
 .form-field textarea:not(:placeholder-shown) + label {
-  top: -2px;
-  font-size: 1.1rem;
+  top: -6px;
+  font-size: 1.3rem;
   color: var(--color-gold);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.22em;
 }
 
 .form-field textarea {
   resize: vertical;
-  min-height: 60px;
+  min-height: 120px;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-md);
+  line-height: 1.5;
 }
 
 /* ─── Select Field ─── */
@@ -90,15 +143,16 @@
   padding: var(--space-md) 0 var(--space-sm);
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--color-cream-dim);
+  border-bottom: 1px solid var(--color-cream-faint);
   color: var(--color-cream);
-  font-size: 1.5rem;
-  font-weight: 300;
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 400;
   outline: none;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23C5A059' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23D4B062' stroke-width='1.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 4px center;
   transition: border-color var(--transition-fast);
@@ -109,7 +163,7 @@
 }
 
 .form-field select option {
-  background: var(--color-navy-mid);
+  background: var(--color-navy-deep);
   color: var(--color-cream);
 }
 
@@ -122,11 +176,12 @@
 }
 
 .form-legend {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-family: var(--font-body);
+  font-size: 1.5rem;
   font-weight: 400;
-  color: var(--color-cream);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
   margin-bottom: var(--space-md);
   padding: 0;
 }
@@ -134,7 +189,7 @@
 /* ─── Attendance Selectors ─── */
 .attendance-options {
   display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .attendance-pill {
@@ -161,39 +216,40 @@
   font-size: 1.5rem;
   font-weight: 400;
   font-style: italic;
-  letter-spacing: 0.03em;
-  color: var(--color-cream-dim);
-  border: none;
-  border-bottom: 1px solid var(--color-cream-dim);
-  background: transparent;
+  letter-spacing: 0.04em;
+  color: var(--color-cream-muted);
+  border: 1px solid var(--color-gold-border-soft);
+  background: rgba(4, 6, 15, 0.3);
   transition: all var(--transition-base);
 }
 
 /* Radio dot indicator */
 .attendance-pill .pill-label::before {
   content: '';
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: 1px solid var(--color-cream-dim);
+  border: 1px solid var(--color-cream-faint);
   flex-shrink: 0;
   transition: all var(--transition-base);
 }
 
 .attendance-pill input:checked + .pill-label {
   color: var(--color-gold);
-  border-bottom-color: var(--color-gold);
+  border-color: var(--color-gold);
+  background: rgba(212, 176, 98, 0.08);
+  box-shadow: 0 0 22px rgba(212, 176, 98, 0.12);
 }
 
 .attendance-pill input:checked + .pill-label::before {
   border-color: var(--color-gold);
   background: var(--color-gold);
-  box-shadow: inset 0 0 0 2.5px var(--color-navy-mid);
+  box-shadow: inset 0 0 0 2.5px var(--color-navy-deep);
 }
 
 .attendance-pill:hover .pill-label {
   color: var(--color-cream);
-  border-bottom-color: var(--color-gold-soft);
+  border-color: var(--color-gold-border);
 }
 
 .attendance-pill input:focus-visible + .pill-label {
@@ -205,7 +261,7 @@
 .dietary-options {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm) var(--space-md);
+  gap: var(--space-sm) var(--space-sm);
 }
 
 .dietary-pill {
@@ -225,30 +281,33 @@
   align-items: center;
   gap: 0.6em;
   padding: var(--space-sm) var(--space-md);
-  font-size: 1.25rem;
-  font-weight: 300;
-  letter-spacing: 0.04em;
-  color: var(--color-cream-dim);
-  border: none;
+  font-family: var(--font-body);
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-cream-muted);
+  border: 1px solid var(--color-gold-border-soft);
   border-radius: 100px;
-  background: rgba(253, 251, 247, 0.04);
+  background: rgba(4, 6, 15, 0.3);
   transition: all var(--transition-base);
 }
 
 /* Checkbox indicator */
 .dietary-pill .pill-label::before {
   content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
-  border: 1px solid var(--color-cream-dim);
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  border: 1px solid var(--color-cream-faint);
   flex-shrink: 0;
   transition: all var(--transition-base);
 }
 
 .dietary-pill input:checked + .pill-label {
   color: var(--color-gold);
-  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--color-gold);
+  background: rgba(212, 176, 98, 0.1);
 }
 
 .dietary-pill input:checked + .pill-label::before {
@@ -257,8 +316,8 @@
 }
 
 .dietary-pill:hover .pill-label {
-  color: var(--color-cream-muted);
-  background: rgba(253, 251, 247, 0.06);
+  color: var(--color-cream);
+  border-color: var(--color-gold-border);
 }
 
 .dietary-pill input:focus-visible + .pill-label {
@@ -286,10 +345,11 @@
   padding: var(--space-sm) 0;
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--color-cream-dim);
+  border-bottom: 1px solid var(--color-cream-faint);
   color: var(--color-cream);
-  font-size: 1.4rem;
-  font-weight: 300;
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 400;
   outline: none;
   transition: border-color var(--transition-fast);
 }
@@ -301,7 +361,9 @@
 /* ─── Error Messages ─── */
 .form-error {
   display: block;
-  font-size: 1.2rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
   color: var(--color-error);
   margin-top: var(--space-xs);
   min-height: 0;
@@ -323,25 +385,33 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   gap: var(--space-sm);
-  min-width: 200px;
+  min-width: 240px;
   padding: var(--space-md) var(--space-2xl);
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-family: var(--font-body);
+  font-size: 1.5rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-navy-deep);
-  background: var(--color-gold);
-  border: none;
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold);
   cursor: pointer;
-  transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  transition: all var(--transition-base);
+}
+
+.rsvp-submit::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(4, 6, 15, 0.25);
+  pointer-events: none;
 }
 
 .rsvp-submit:hover {
-  background: var(--color-gold-soft);
-  box-shadow: 0 0 30px var(--color-gold-glow);
-  transform: translateY(-1px);
+  box-shadow: 0 0 36px var(--color-gold-glow), 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
 }
 
 .rsvp-submit:active {
@@ -382,29 +452,35 @@
   font-size: 4rem;
   color: var(--color-gold);
   margin-bottom: var(--space-md);
+  filter: drop-shadow(0 0 20px rgba(233, 203, 125, 0.4));
 }
 
 .success-heading {
   font-family: var(--font-serif);
   font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--color-cream);
   margin-bottom: var(--space-md);
 }
 
 .success-message {
-  font-size: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-style: italic;
   color: var(--color-cream-muted);
 }
 
 .rsvp-error-banner {
   text-align: center;
   padding: var(--space-md);
-  background: rgba(197, 120, 90, 0.15);
+  background: rgba(197, 120, 90, 0.1);
   border: 1px solid var(--color-error);
   margin-top: var(--space-lg);
 }
 
 .rsvp-error-banner p {
   color: var(--color-error);
-  font-size: 1.35rem;
+  font-size: 1.5rem;
 }

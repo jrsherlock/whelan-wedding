@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theresa & Groom | December 20, 2026</title>
-  <meta name="description" content="Join us to celebrate the wedding of Theresa & Groom. December 20, 2026.">
+  <title>Theresa &amp; Groom &middot; December 20, 2026</title>
+  <meta name="description" content="Join us to celebrate the wedding of Theresa &amp; Groom — December 20, 2026. A winter evening in Iowa City, Iowa.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Theresa & Groom — Wedding">
+  <meta property="og:title" content="Theresa &amp; Groom — A Winter Wedding">
   <meta property="og:description" content="We invite you to celebrate our wedding. December 20, 2026.">
   <meta property="og:type" content="website">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/variables.css">
@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/details.css">
   <link rel="stylesheet" href="css/travel.css">
+  <link rel="stylesheet" href="css/registry.css">
+  <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/rsvp.css">
   <link rel="stylesheet" href="css/faq.css">
   <link rel="stylesheet" href="css/animations.css">
@@ -30,10 +32,154 @@
 </head>
 <body>
 
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- BOTANICAL SVG SYMBOLS — referenced via <use> -->
+  <!-- ═══════════════════════════════════════════ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <!-- Fern frond used in hero corners -->
+      <symbol id="botanical-fern" viewBox="0 0 140 220">
+        <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round">
+          <!-- Main stem -->
+          <path d="M30 215 C 38 170, 50 120, 62 80 C 70 50, 78 28, 88 8" stroke-width="1.4"/>
+          <!-- Pairs of leaflets along stem -->
+          <g>
+            <path d="M32 200 C 22 195, 14 188, 8 178"/>
+            <path d="M36 200 C 46 196, 56 188, 64 176"/>
+          </g>
+          <g>
+            <path d="M36 184 C 26 178, 18 170, 12 158"/>
+            <path d="M40 184 C 50 180, 60 170, 68 156"/>
+          </g>
+          <g>
+            <path d="M40 168 C 30 162, 22 152, 16 138"/>
+            <path d="M44 168 C 56 162, 66 150, 74 136"/>
+          </g>
+          <g>
+            <path d="M44 150 C 34 144, 26 132, 22 120"/>
+            <path d="M48 150 C 60 144, 72 132, 80 116"/>
+          </g>
+          <g>
+            <path d="M50 130 C 42 124, 36 114, 32 100"/>
+            <path d="M54 130 C 66 124, 78 114, 86 98"/>
+          </g>
+          <g>
+            <path d="M56 110 C 48 104, 44 94, 42 82"/>
+            <path d="M60 110 C 72 104, 82 94, 90 80"/>
+          </g>
+          <g>
+            <path d="M64 88 C 58 82, 56 72, 56 60"/>
+            <path d="M68 88 C 78 82, 86 72, 92 58"/>
+          </g>
+          <g>
+            <path d="M72 66 C 68 58, 68 50, 70 40"/>
+            <path d="M76 66 C 84 58, 90 48, 94 36"/>
+          </g>
+          <g>
+            <path d="M80 46 C 78 38, 80 30, 84 22"/>
+            <path d="M84 46 C 92 38, 96 28, 98 18"/>
+          </g>
+          <!-- Tip -->
+          <path d="M88 24 C 86 18, 86 12, 88 6"/>
+          <!-- A few subtle berries/dots -->
+          <circle cx="14" cy="190" r="1.3" fill="currentColor" stroke="none"/>
+          <circle cx="20" cy="155" r="1.1" fill="currentColor" stroke="none"/>
+          <circle cx="26" cy="125" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="34" cy="98" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="44" cy="72" r="0.9" fill="currentColor" stroke="none"/>
+        </g>
+      </symbol>
+
+      <!-- Small ornament: laurel pair / divider -->
+      <symbol id="botanical-laurel" viewBox="0 0 80 30">
+        <g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round">
+          <!-- Left branch -->
+          <path d="M2 15 C 12 14, 22 13, 30 15"/>
+          <path d="M8 15 C 6 11, 6 9, 8 7"/>
+          <path d="M14 15 C 12 11, 12 9, 14 7"/>
+          <path d="M20 15 C 18 11, 18 9, 20 7"/>
+          <path d="M8 15 C 6 19, 6 21, 8 23"/>
+          <path d="M14 15 C 12 19, 12 21, 14 23"/>
+          <path d="M20 15 C 18 19, 18 21, 20 23"/>
+          <!-- Right branch -->
+          <path d="M50 15 C 58 13, 68 14, 78 15"/>
+          <path d="M56 15 C 58 11, 58 9, 56 7"/>
+          <path d="M62 15 C 64 11, 64 9, 62 7"/>
+          <path d="M68 15 C 70 11, 70 9, 68 7"/>
+          <path d="M56 15 C 58 19, 58 21, 56 23"/>
+          <path d="M62 15 C 64 19, 64 21, 62 23"/>
+          <path d="M68 15 C 70 19, 70 21, 68 23"/>
+          <!-- Center diamond -->
+          <path d="M40 9 L 44 15 L 40 21 L 36 15 Z" fill="currentColor" stroke="none" opacity="0.9"/>
+        </g>
+      </symbol>
+
+      <!-- Snowflake icon for ceremony -->
+      <symbol id="icon-snowflake" viewBox="0 0 60 60">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <line x1="30" y1="6" x2="30" y2="54"/>
+          <line x1="30" y1="6" x2="26" y2="12"/>
+          <line x1="30" y1="6" x2="34" y2="12"/>
+          <line x1="30" y1="54" x2="26" y2="48"/>
+          <line x1="30" y1="54" x2="34" y2="48"/>
+          <line x1="6" y1="30" x2="54" y2="30"/>
+          <line x1="6" y1="30" x2="12" y2="26"/>
+          <line x1="6" y1="30" x2="12" y2="34"/>
+          <line x1="54" y1="30" x2="48" y2="26"/>
+          <line x1="54" y1="30" x2="48" y2="34"/>
+          <line x1="13" y1="13" x2="47" y2="47"/>
+          <line x1="47" y1="13" x2="13" y2="47"/>
+          <circle cx="30" cy="30" r="3" fill="currentColor" stroke="none"/>
+        </g>
+      </symbol>
+
+      <!-- Champagne flute pair for reception -->
+      <symbol id="icon-flutes" viewBox="0 0 60 60">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8 L 22 8 C 22 18, 26 22, 24 30 L 16 30 C 14 22, 18 18, 18 8 Z"/>
+          <line x1="20" y1="30" x2="20" y2="48"/>
+          <line x1="14" y1="50" x2="26" y2="50"/>
+          <path d="M38 8 L 42 8 C 42 18, 46 22, 44 30 L 36 30 C 34 22, 38 18, 38 8 Z"/>
+          <line x1="40" y1="30" x2="40" y2="48"/>
+          <line x1="34" y1="50" x2="46" y2="50"/>
+          <circle cx="20" cy="14" r="0.8" fill="currentColor" stroke="none"/>
+          <circle cx="40" cy="16" r="0.8" fill="currentColor" stroke="none"/>
+        </g>
+      </symbol>
+
+      <!-- Gift box -->
+      <symbol id="icon-gift" viewBox="0 0 60 60">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="10" y="22" width="40" height="30"/>
+          <line x1="10" y1="32" x2="50" y2="32"/>
+          <line x1="30" y1="22" x2="30" y2="52"/>
+          <path d="M30 22 C 22 22, 18 16, 22 12 C 26 8, 30 14, 30 22"/>
+          <path d="M30 22 C 38 22, 42 16, 38 12 C 34 8, 30 14, 30 22"/>
+        </g>
+      </symbol>
+
+      <!-- Plane / honeymoon -->
+      <symbol id="icon-plane" viewBox="0 0 60 60">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 36 L 24 30 L 32 8 L 36 8 L 32 32 L 44 36 L 48 28 L 52 28 L 48 38 L 52 48 L 48 48 L 44 40 L 32 44 L 36 56 L 32 56 L 24 46 L 8 40 Z"/>
+        </g>
+      </symbol>
+
+      <!-- Wine glass / registry -->
+      <symbol id="icon-cups" viewBox="0 0 60 60">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 12 L 44 12 C 44 28, 38 36, 30 36 C 22 36, 16 28, 16 12 Z"/>
+          <line x1="30" y1="36" x2="30" y2="50"/>
+          <line x1="20" y1="52" x2="40" y2="52"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
   <!-- Navigation -->
   <nav class="site-nav" id="site-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="#home" class="nav-logo">T <span class="nav-ampersand">&</span> G</a>
+      <a href="#home" class="nav-logo">T<span class="nav-ampersand">&amp;</span>G</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
@@ -42,7 +188,9 @@
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#details">Details</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#travel">Travel</a></li>
+        <li><a href="#registry">Registry</a></li>
         <li><a href="#rsvp">RSVP</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -54,7 +202,9 @@
     <ul class="mobile-menu-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#travel">Travel</a></li>
+      <li><a href="#registry">Registry</a></li>
       <li><a href="#rsvp">RSVP</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -68,23 +218,42 @@
     <section id="home" class="hero">
       <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
       <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <p class="hero-prelude reveal">Together with their families</p>
-        <h1 class="hero-names reveal">
-          <span class="script-text">Theresa</span>
-          <span class="hero-ampersand">&</span>
-          <span class="script-text">Groom</span>
-        </h1>
-        <div class="hero-divider reveal" aria-hidden="true">
-          <span class="divider-line"></span>
-          <span class="divider-ornament">&#10044;</span>
-          <span class="divider-line"></span>
+
+      <div class="hero-frame">
+        <!-- Botanical fern corners -->
+        <span class="botanical hero-fern hero-fern--tl" aria-hidden="true">
+          <svg viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg"><use href="#botanical-fern"/></svg>
+        </span>
+        <span class="botanical hero-fern hero-fern--tr" aria-hidden="true">
+          <svg viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg"><use href="#botanical-fern"/></svg>
+        </span>
+        <span class="botanical hero-fern hero-fern--bl" aria-hidden="true">
+          <svg viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg"><use href="#botanical-fern"/></svg>
+        </span>
+        <span class="botanical hero-fern hero-fern--br" aria-hidden="true">
+          <svg viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg"><use href="#botanical-fern"/></svg>
+        </span>
+
+        <div class="hero-content">
+          <p class="hero-prelude reveal">Please join us</p>
+          <h1 class="hero-names reveal">
+            <span class="script-text">Theresa</span>
+            <span class="hero-ampersand">&amp;</span>
+            <span class="script-text">Groom</span>
+          </h1>
+          <div class="hero-divider reveal" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-ornament">&#10022;</span>
+            <span class="divider-line"></span>
+          </div>
+          <p class="hero-date reveal">Sunday, the Twentieth of December</p>
+          <p class="hero-date-numeric reveal">12 &middot; 20 &middot; 2026</p>
+          <p class="hero-message reveal">A winter evening in Iowa City &mdash; we joyfully invite you to celebrate</p>
+          <a href="#details" class="hero-scroll-cue reveal" aria-label="Scroll to details">
+            <span>Discover</span>
+            <span class="scroll-cue-line"></span>
+          </a>
         </div>
-        <p class="hero-date reveal">December 20, 2026</p>
-        <p class="hero-message reveal">We joyfully invite you to celebrate our wedding day</p>
-        <a href="#details" class="hero-scroll-cue reveal" aria-label="Scroll to details">
-          <span class="scroll-cue-line"></span>
-        </a>
       </div>
     </section>
 
@@ -92,71 +261,132 @@
     <!-- WEDDING DETAILS -->
     <!-- ═══════════════════════════════════════════ -->
     <section id="details" class="section section--alt">
-      <span class="section-ornament section-ornament--tl" aria-hidden="true"></span>
-      <span class="section-ornament section-ornament--tr" aria-hidden="true"></span>
-      <span class="section-ornament section-ornament--bl" aria-hidden="true"></span>
-      <span class="section-ornament section-ornament--br" aria-hidden="true"></span>
       <div class="section-inner section-inner--wide">
-        <h2 class="section-title reveal">
-          <span class="section-title-text">Wedding Details</span>
-        </h2>
-        <div class="section-subtitle reveal">
+        <header class="section-header reveal">
+          <span class="section-kicker">A Winter Celebration</span>
+          <h2 class="section-title">
+            <span class="section-title-text">The Day</span>
+          </h2>
           <span class="gold-rule"></span>
+        </header>
+
+        <div class="date-stamp reveal">
+          <span class="date-stamp-day">Sunday Evening</span>
+          <div class="date-stamp-numeric">
+            <span>12</span>
+            <span class="sep">&#10022;</span>
+            <span>20</span>
+            <span class="sep">&#10022;</span>
+            <span>2026</span>
+          </div>
+          <span class="date-stamp-loc">Iowa City &middot; Iowa</span>
         </div>
 
-        <div class="timeline">
+        <p class="details-quote reveal">
+          &ldquo;On the longest nights of the year, we gather by candlelight to make our promises &mdash; and to begin the rest of our lives.&rdquo;
+        </p>
 
-          <div class="timeline-event reveal">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-time">
-              <span class="timeline-hour">3:00 PM</span>
-            </div>
-            <div class="timeline-info">
-              <h3 class="timeline-event-name">The Ceremony</h3>
-              <p class="timeline-venue">Venue Name</p>
-              <p class="timeline-address">Iowa City, IA</p>
-              <p class="timeline-note">Please arrive 15 minutes early to be seated</p>
-            </div>
-          </div>
+        <div class="event-grid">
 
-          <div class="timeline-event reveal">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-time">
-              <span class="timeline-hour">5:00 PM</span>
-            </div>
-            <div class="timeline-info">
-              <h3 class="timeline-event-name">Reception & Dinner</h3>
-              <p class="timeline-venue">Venue Name</p>
-              <p class="timeline-address">Iowa City, IA</p>
-              <p class="timeline-note">Dinner, dancing, and celebration</p>
-            </div>
-          </div>
+          <article class="event-card reveal">
+            <span class="event-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><use href="#icon-snowflake"/></svg>
+            </span>
+            <p class="event-time">Three O&rsquo;Clock</p>
+            <h3 class="event-name">The Ceremony</h3>
+            <span class="event-name-rule"></span>
+            <p class="event-venue">Venue Name</p>
+            <p class="event-address">Iowa City &middot; Iowa</p>
+            <p class="event-note">Please arrive fifteen minutes early to be seated</p>
+          </article>
+
+          <article class="event-card reveal">
+            <span class="event-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><use href="#icon-flutes"/></svg>
+            </span>
+            <p class="event-time">Five O&rsquo;Clock</p>
+            <h3 class="event-name">Reception</h3>
+            <span class="event-name-rule"></span>
+            <p class="event-venue">Venue Name</p>
+            <p class="event-address">Iowa City &middot; Iowa</p>
+            <p class="event-note">Dinner, dancing &amp; celebration to follow</p>
+          </article>
 
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════ -->
+    <!-- PHOTO GALLERY -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="gallery" class="section">
+      <div class="section-inner section-inner--wide">
+        <header class="section-header reveal">
+          <span class="section-kicker">Engagement</span>
+          <h2 class="section-title">
+            <span class="section-title-text">Our Story in Pictures</span>
+          </h2>
+          <span class="gold-rule"></span>
+        </header>
+
+        <p class="gallery-intro reveal">A few of our favorite moments from this past year &mdash; the calm before the snowfall.</p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item gallery-item--1 reveal">
+            <img src="images/gallery/1-couple-silhouette.jpg" alt="Couple silhouette with warm backlighting" loading="lazy">
+          </div>
+          <div class="gallery-item gallery-item--2 reveal">
+            <img src="images/gallery/2-couple-golden.jpg" alt="Couple portrait at golden hour" loading="lazy">
+          </div>
+          <div class="gallery-item gallery-item--3 reveal">
+            <img src="images/gallery/3-couple-sunset.jpg" alt="Romantic sunset embrace" loading="lazy">
+          </div>
+          <div class="gallery-item gallery-item--4 reveal">
+            <img src="images/gallery/4-rings-velvet.jpg" alt="Wedding rings on velvet" loading="lazy">
+          </div>
+          <div class="gallery-item gallery-item--5 reveal">
+            <img src="images/gallery/5-bouquet-moody.jpg" alt="Moody floral bouquet in amber tones" loading="lazy">
+          </div>
+          <div class="gallery-item gallery-item--6 reveal">
+            <img src="images/gallery/6-champagne-table.jpg" alt="Champagne glasses at reception table" loading="lazy">
+          </div>
+          <div class="gallery-item gallery-item--7 reveal">
+            <img src="images/gallery/7-string-lights.jpg" alt="Venue with warm string lights" loading="lazy">
+          </div>
+          <div class="gallery-item gallery-item--8 reveal">
+            <img src="images/gallery/8-candlelit-table.jpg" alt="Candlelit dinner table setting" loading="lazy">
+          </div>
+          <div class="gallery-item gallery-item--9 reveal">
+            <img src="images/gallery/9-reception-golden.jpg" alt="Golden reception with candles and flowers" loading="lazy">
+          </div>
+        </div>
+
+        <p class="gallery-footer reveal">Stock photography via Unsplash &mdash; to be replaced with engagement photos</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
     <!-- TRAVEL & ACCOMMODATIONS -->
     <!-- ═══════════════════════════════════════════ -->
-    <section id="travel" class="section">
+    <section id="travel" class="section section--alt">
       <div class="section-inner">
-        <h2 class="section-title reveal">
-          <span class="section-title-text">Travel & Accommodations</span>
-        </h2>
-        <div class="section-subtitle reveal">
+        <header class="section-header reveal">
+          <span class="section-kicker">Plan your stay</span>
+          <h2 class="section-title">
+            <span class="section-title-text">Travel &amp; Lodging</span>
+          </h2>
           <span class="gold-rule"></span>
-        </div>
+        </header>
 
         <!-- Placeholder state — remove .placeholder-active class to reveal hotel blocks -->
         <div class="travel-content placeholder-active">
 
-          <!-- Placeholder card (shown when .placeholder-active) -->
+          <!-- Placeholder card -->
           <div class="travel-placeholder reveal">
-            <div class="placeholder-icon" aria-hidden="true">&#9733;</div>
+            <div class="placeholder-icon" aria-hidden="true">&#10022;</div>
             <h3 class="placeholder-heading">Details Coming Soon</h3>
             <p class="placeholder-text">
-              We're finalizing hotel room blocks and travel details for our guests.
+              We&rsquo;re finalizing hotel room blocks and travel details for our guests.
               Check back soon for booking information and recommended accommodations.
             </p>
             <div class="placeholder-divider" aria-hidden="true"></div>
@@ -166,21 +396,23 @@
             </p>
           </div>
 
-          <!-- Hotel blocks (hidden when .placeholder-active, shown when class removed) -->
+          <!-- Hotel blocks (hidden when .placeholder-active) -->
           <div class="hotel-grid">
             <div class="hotel-card reveal">
               <h3 class="hotel-name">Hotel Name</h3>
+              <span class="hotel-name-rule"></span>
               <p class="hotel-address">123 Main Street, Iowa City, IA 52240</p>
               <p class="hotel-block">Room block: Whelan-Wedding</p>
-              <p class="hotel-rate">Rate: $XXX/night</p>
+              <p class="hotel-rate">Rate: $XXX / night</p>
               <p class="hotel-deadline">Book by: TBD</p>
               <a href="#" class="hotel-book-btn">Book Now</a>
             </div>
             <div class="hotel-card reveal">
               <h3 class="hotel-name">Hotel Name</h3>
+              <span class="hotel-name-rule"></span>
               <p class="hotel-address">456 Oak Avenue, Iowa City, IA 52240</p>
               <p class="hotel-block">Room block: Whelan-Wedding</p>
-              <p class="hotel-rate">Rate: $XXX/night</p>
+              <p class="hotel-rate">Rate: $XXX / night</p>
               <p class="hotel-deadline">Book by: TBD</p>
               <a href="#" class="hotel-book-btn">Book Now</a>
             </div>
@@ -191,23 +423,73 @@
     </section>
 
     <!-- ═══════════════════════════════════════════ -->
+    <!-- REGISTRY -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="registry" class="section">
+      <div class="section-inner section-inner--wide">
+        <header class="section-header reveal">
+          <span class="section-kicker">With gratitude</span>
+          <h2 class="section-title">
+            <span class="section-title-text">Registry</span>
+          </h2>
+          <span class="gold-rule"></span>
+        </header>
+
+        <p class="registry-intro reveal">
+          Your presence is the greatest gift &mdash; truly. For those who&rsquo;ve asked, we&rsquo;ve gathered a few favorite places to shop and a fund for our honeymoon.
+        </p>
+
+        <div class="registry-grid">
+
+          <article class="registry-card reveal">
+            <span class="registry-icon" aria-hidden="true">
+              <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><use href="#icon-gift"/></svg>
+            </span>
+            <h3 class="registry-name">The Home</h3>
+            <span class="registry-name-rule"></span>
+            <p class="registry-description">Pieces for our first home together &mdash; the everyday things we&rsquo;ll love for years to come.</p>
+            <a href="#" class="registry-link" target="_blank" rel="noopener">Crate &amp; Barrel</a>
+          </article>
+
+          <article class="registry-card reveal">
+            <span class="registry-icon" aria-hidden="true">
+              <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><use href="#icon-cups"/></svg>
+            </span>
+            <h3 class="registry-name">The Table</h3>
+            <span class="registry-name-rule"></span>
+            <p class="registry-description">Glassware, linens, and the small luxuries that turn weeknight dinners into something memorable.</p>
+            <a href="#" class="registry-link" target="_blank" rel="noopener">Williams Sonoma</a>
+          </article>
+
+          <article class="registry-card reveal">
+            <span class="registry-icon" aria-hidden="true">
+              <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><use href="#icon-plane"/></svg>
+            </span>
+            <h3 class="registry-name">The Honeymoon</h3>
+            <span class="registry-name-rule"></span>
+            <p class="registry-description">Help us escape the Iowa winter &mdash; contributions toward an unforgettable trip mean the world.</p>
+            <a href="#" class="registry-link" target="_blank" rel="noopener">Honeyfund</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
     <!-- RSVP -->
     <!-- ═══════════════════════════════════════════ -->
     <section id="rsvp" class="section section--alt">
-      <span class="section-ornament section-ornament--tl" aria-hidden="true"></span>
-      <span class="section-ornament section-ornament--tr" aria-hidden="true"></span>
-      <span class="section-ornament section-ornament--bl" aria-hidden="true"></span>
-      <span class="section-ornament section-ornament--br" aria-hidden="true"></span>
       <div class="section-inner">
-        <h2 class="section-title reveal">
-          <span class="section-title-text">RSVP</span>
-        </h2>
-        <div class="section-subtitle reveal">
+        <header class="section-header reveal">
+          <span class="section-kicker">Respondez s&rsquo;il vous pla&icirc;t</span>
+          <h2 class="section-title">
+            <span class="section-title-text">RSVP</span>
+          </h2>
           <span class="gold-rule"></span>
           <p class="rsvp-subtitle">Kindly respond by November 1, 2026</p>
-        </div>
+        </header>
 
-        <form class="rsvp-form reveal" id="rsvp-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <form class="rsvp-form reveal" id="rsvp-form" method="POST" novalidate>
 
           <!-- Honeypot -->
           <div class="hp-field" aria-hidden="true">
@@ -218,7 +500,7 @@
           <!-- Guest Names -->
           <div class="form-group">
             <div class="form-field">
-              <input type="text" id="guest-name" name="guest_name" placeholder=" " required autocomplete="name">
+              <input type="text" id="guest-name" name="guest_name" placeholder=" " required autocomplete="name" maxlength="100">
               <label for="guest-name">Guest Name(s)</label>
               <span class="form-error" id="name-error"></span>
             </div>
@@ -227,7 +509,7 @@
           <!-- Email -->
           <div class="form-group">
             <div class="form-field">
-              <input type="email" id="guest-email" name="email" placeholder=" " required autocomplete="email">
+              <input type="email" id="guest-email" name="email" placeholder=" " required autocomplete="email" maxlength="120">
               <label for="guest-email">Email Address</label>
               <span class="form-error" id="email-error"></span>
             </div>
@@ -293,14 +575,14 @@
               </label>
             </div>
             <div class="dietary-other-field" id="dietary-other-field">
-              <input type="text" id="dietary-other-text" name="dietary_other" placeholder="Please specify...">
+              <input type="text" id="dietary-other-text" name="dietary_other" placeholder="Please specify..." maxlength="100">
             </div>
           </fieldset>
 
           <!-- Message -->
-          <div class="form-group">
+          <div class="form-group message-group">
             <div class="form-field">
-              <textarea id="guest-message" name="message" placeholder=" " rows="3"></textarea>
+              <textarea id="guest-message" name="message" placeholder=" " rows="4" maxlength="500"></textarea>
               <label for="guest-message">Message for the couple (optional)</label>
             </div>
           </div>
@@ -315,9 +597,9 @@
 
           <!-- Success Message -->
           <div class="rsvp-success" id="rsvp-success" hidden>
-            <div class="success-icon" aria-hidden="true">&#10003;</div>
-            <h3 class="success-heading">Thank You!</h3>
-            <p class="success-message">Your RSVP has been received. We can't wait to celebrate with you!</p>
+            <div class="success-icon" aria-hidden="true">&#10022;</div>
+            <h3 class="success-heading">Thank You</h3>
+            <p class="success-message">Your RSVP has been received &mdash; we can&rsquo;t wait to celebrate with you.</p>
           </div>
 
           <!-- Error Message -->
@@ -334,19 +616,20 @@
     <!-- ═══════════════════════════════════════════ -->
     <section id="faq" class="section">
       <div class="section-inner">
-        <h2 class="section-title reveal">
-          <span class="section-title-text">Questions & Answers</span>
-        </h2>
-        <div class="section-subtitle reveal">
+        <header class="section-header reveal">
+          <span class="section-kicker">In case you&rsquo;re wondering</span>
+          <h2 class="section-title">
+            <span class="section-title-text">Questions &amp; Answers</span>
+          </h2>
           <span class="gold-rule"></span>
-        </div>
+        </header>
 
         <div class="faq-list">
 
           <details class="faq-item reveal">
             <summary class="faq-question">What is the dress code?</summary>
             <div class="faq-answer">
-              <p>Black tie optional. We encourage formal attire to match the elegance of the evening. Think floor-length gowns, cocktail dresses, or dark suits and tuxedos.</p>
+              <p>Black tie optional. We encourage formal attire to match the elegance of the evening &mdash; think floor-length gowns, cocktail dresses, or dark suits and tuxedos. Deep jewel tones and winter whites are especially welcome.</p>
             </div>
           </details>
 
@@ -360,7 +643,7 @@
           <details class="faq-item reveal">
             <summary class="faq-question">Are children welcome?</summary>
             <div class="faq-answer">
-              <p>While we love your little ones, our wedding will be an adults-only celebration. We hope this gives you a wonderful excuse for a night out!</p>
+              <p>While we love your little ones, our wedding will be an adults-only celebration. We hope this gives you a wonderful excuse for a night out.</p>
             </div>
           </details>
 
@@ -374,14 +657,14 @@
           <details class="faq-item reveal">
             <summary class="faq-question">What if I have dietary restrictions?</summary>
             <div class="faq-answer">
-              <p>Please let us know about any dietary needs on your RSVP card. We are committed to making sure every guest is well taken care of at dinner.</p>
+              <p>Please let us know about any dietary needs on your RSVP. We are committed to making sure every guest is well taken care of at dinner.</p>
             </div>
           </details>
 
           <details class="faq-item reveal">
             <summary class="faq-question">Will the ceremony and reception be indoors or outdoors?</summary>
             <div class="faq-answer">
-              <p>Both the ceremony and reception will be held indoors. No need to worry about the winter weather!</p>
+              <p>Both the ceremony and reception will be held indoors &mdash; no need to worry about the winter weather. Cozy, candlelit, and warm.</p>
             </div>
           </details>
 
@@ -396,8 +679,12 @@
   <!-- ═══════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-names script-text">Theresa & Groom</p>
-      <p class="footer-date">December 20, 2026</p>
+      <div class="footer-monogram">
+        T <span class="amp">&amp;</span> G
+      </div>
+      <p class="footer-names script-text">Theresa &amp; Groom</p>
+      <span class="footer-rule"></span>
+      <p class="footer-date">December &middot; XX &middot; MMXXVI</p>
       <p class="footer-made">Made with love</p>
     </div>
   </footer>

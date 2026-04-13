@@ -1,21 +1,46 @@
 :root {
-  /* ─── Colors ─── */
-  --color-navy-deep: #0A1128;
-  --color-navy-mid: #0F172A;
-  --color-navy-light: #162040;
-  --color-cream: #FDFBF7;
-  --color-cream-muted: #F3EFE0;
-  --color-cream-dim: rgba(253, 251, 247, 0.5);
-  --color-gold: #D4AF37;
+  /* ─── Colors: Midnight Garden Palette ─── */
+  --color-ink: #04060F;            /* near-black ink, deeper than navy */
+  --color-navy-deep: #070B1C;      /* primary background — almost black */
+  --color-navy-mid: #0B1227;       /* alt sections */
+  --color-navy-light: #131C39;     /* card surface */
+  --color-navy-frost: rgba(11, 18, 39, 0.72);
+  --color-navy-veil: rgba(4, 6, 15, 0.55);
+
+  --color-cream: #F4ECD8;          /* warmer cream, candle-lit */
+  --color-cream-soft: #E8DEC4;
+  --color-cream-muted: rgba(244, 236, 216, 0.78);
+  --color-cream-dim: rgba(244, 236, 216, 0.48);
+  --color-cream-faint: rgba(244, 236, 216, 0.18);
+
+  --color-gold: #D4B062;           /* warm champagne gold */
+  --color-gold-bright: #E9CB7D;    /* highlight gold */
+  --color-gold-deep: #A07F36;      /* shadow gold */
   --color-gold-soft: #C5A059;
-  --color-gold-glow: rgba(212, 175, 55, 0.3);
-  --color-gold-border: rgba(212, 175, 55, 0.2);
+  --color-gold-glow: rgba(233, 203, 125, 0.32);
+  --color-gold-veil: rgba(212, 176, 98, 0.12);
+  --color-gold-border: rgba(212, 176, 98, 0.28);
+  --color-gold-border-soft: rgba(212, 176, 98, 0.16);
+
   --color-error: #C5785A;
+
+  /* Reusable gold gradient — leaf-gilding */
+  --gradient-gold:
+    linear-gradient(135deg, #A07F36 0%, #D4B062 28%, #E9CB7D 50%, #D4B062 72%, #A07F36 100%);
+  --gradient-gold-rule:
+    linear-gradient(90deg, transparent 0%, var(--color-gold-border) 15%, var(--color-gold) 50%, var(--color-gold-border) 85%, transparent 100%);
 
   /* ─── Typography ─── */
   --font-script: 'Pinyon Script', cursive;
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
   --font-serif: 'Cormorant Garamond', 'Georgia', serif;
   --font-body: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Tracking tokens */
+  --tracking-tight: 0.02em;
+  --tracking-normal: 0.06em;
+  --tracking-wide: 0.18em;
+  --tracking-widest: 0.32em;
 
   /* ─── Spacing ─── */
   --space-xs: 0.4rem;
@@ -25,16 +50,23 @@
   --space-xl: 4rem;
   --space-2xl: 6.4rem;
   --space-3xl: 9.6rem;
+  --space-4xl: 14rem;
 
   /* ─── Layout ─── */
-  --nav-height: 72px;
+  --nav-height: 78px;
   --content-max: 1080px;
   --content-wide: 1200px;
   --content-narrow: 720px;
 
+  /* ─── Shadows ─── */
+  --shadow-card: 0 30px 80px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--color-gold-border-soft);
+  --shadow-glow: 0 0 60px rgba(233, 203, 125, 0.18);
+  --shadow-text-glow: 0 0 22px rgba(233, 203, 125, 0.35), 0 0 60px rgba(212, 176, 98, 0.18);
+
   /* ─── Transitions ─── */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --transition-fast: 0.2s var(--ease-out);
-  --transition-base: 0.35s var(--ease-out);
-  --transition-slow: 0.6s var(--ease-out);
+  --transition-base: 0.4s var(--ease-out);
+  --transition-slow: 0.8s var(--ease-out);
 }

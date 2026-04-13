@@ -3,9 +3,10 @@
  */
 
 // ─── Configuration ───
-// Set this to your Formspree form ID (e.g. 'https://formspree.io/f/xABcdEfG')
-// While set to null, the form will simulate a successful submission.
-const FORM_ENDPOINT = null;
+// Google Apps Script web app that appends submissions to the RSVP Sheet.
+// Source: Apps Script project "Whelan Wedding RSVP Backend" in the dev's
+// Google account. Set to null to switch back to demo (no-network) mode.
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx9L8MiT_Maq6ByAdTmWQarEtoc4CF2KjKAO1Z3bkhxWOcL5VGNGfKNCey0PVg9OiCmNg/exec';
 
 export function initRSVP() {
   const form = document.getElementById('rsvp-form');
@@ -16,6 +17,18 @@ export function initRSVP() {
   const errorBanner = document.getElementById('rsvp-error-banner');
   const otherCheck = document.getElementById('dietary-other-check');
   const otherField = document.getElementById('dietary-other-field');
+
+  // ─── Clear browser autofill background ───
+  // When the browser pre-fills inputs, the autofill pseudo-class sticks
+  // and forces a UA background. Re-setting the value programmatically
+  // removes the autofill state while keeping the filled text.
+  setTimeout(() => {
+    form.querySelectorAll('input:-webkit-autofill').forEach(input => {
+      const val = input.value;
+      input.value = '';
+      input.value = val;
+    });
+  }, 50);
 
   // ─── Dietary "Other" toggle ───
   if (otherCheck && otherField) {

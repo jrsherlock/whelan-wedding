@@ -1,0 +1,139 @@
+/* ─── Photo Gallery Section ─── */
+.gallery-intro {
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto var(--space-2xl);
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-style: italic;
+  color: var(--color-cream-muted);
+  line-height: 1.7;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 180px;
+  gap: var(--space-md);
+  max-width: var(--content-wide);
+  margin: 0 auto;
+}
+
+/* ─── Gallery Item ─── */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy-light);
+  border: 1px solid var(--color-gold-border-soft);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+/* Asymmetric editorial layout */
+.gallery-item--1 { grid-column: span 5; grid-row: span 2; }
+.gallery-item--2 { grid-column: span 4; grid-row: span 1; }
+.gallery-item--3 { grid-column: span 3; grid-row: span 1; }
+.gallery-item--4 { grid-column: span 4; grid-row: span 2; }
+.gallery-item--5 { grid-column: span 3; grid-row: span 1; }
+.gallery-item--6 { grid-column: span 5; grid-row: span 1; }
+.gallery-item--7 { grid-column: span 4; grid-row: span 1; }
+.gallery-item--8 { grid-column: span 4; grid-row: span 1; }
+.gallery-item--9 { grid-column: span 4; grid-row: span 1; }
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85) saturate(0.95);
+  transition: all 0.7s var(--ease-out);
+}
+
+/* ─── Placeholder image (when no real image present) ─── */
+.gallery-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(135deg, rgba(19, 28, 57, 0.9), rgba(11, 18, 39, 0.95)),
+    radial-gradient(ellipse at center, rgba(212, 176, 98, 0.08), transparent 70%);
+  color: var(--color-gold);
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: var(--space-md);
+}
+
+.gallery-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid var(--color-gold-border-soft);
+  pointer-events: none;
+}
+
+.gallery-placeholder span {
+  position: relative;
+}
+
+/* Subtle decorative diamond on placeholder */
+.gallery-placeholder::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-26px);
+  color: var(--color-gold);
+  font-size: 1.4rem;
+  opacity: 0.6;
+}
+
+.gallery-placeholder span {
+  margin-top: 30px;
+  display: block;
+  opacity: 0.7;
+}
+
+/* ─── Hover State — gold overlay ─── */
+.gallery-item:hover {
+  border-color: var(--color-gold-border);
+  transform: translateY(-2px);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+  filter: brightness(0.95) saturate(1);
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 50%, rgba(4, 6, 15, 0.7) 100%),
+    radial-gradient(ellipse at center, transparent 60%, rgba(212, 176, 98, 0.08) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* ─── Gallery Caption (optional) ─── */
+.gallery-footer {
+  text-align: center;
+  margin-top: var(--space-2xl);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.45rem;
+  color: var(--color-cream-dim);
+  letter-spacing: 0.06em;
+}
