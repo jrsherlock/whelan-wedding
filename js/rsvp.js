@@ -142,6 +142,8 @@ export function initRSVP() {
         formData.set('dietary_restrictions', dietaryValues.join(', '));
       }
 
+      let result;
+
       if (FORM_ENDPOINT) {
         // Live mode — send to real backend
         const response = await fetch(FORM_ENDPOINT, {
@@ -150,7 +152,25 @@ export function initRSVP() {
           headers: { 'Accept': 'application/json' },
         });
 
-        if (!response.ok) throw new Error('Submission failed');
+        result = await response.json();
+
+        if (!result.ok) {
+          // Name not on guest list — show inline error on the name field
+          if (result.error === 'name_not_found') {
+            showError('name-error', result.message);
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+            return;
+          }
+          // Rate limited — show banner with specific message
+          if (result.error === 'rate_limited') {
+            showBannerError(result.message);
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+            return;
+          }
+          throw new Error(result.error || 'Submission failed');
+        }
       } else {
         // Demo mode — simulate network delay then succeed
         await new Promise(resolve => setTimeout(resolve, 1200));
@@ -162,7 +182,7 @@ export function initRSVP() {
       });
       successEl.hidden = false;
     } catch {
-      errorBanner.hidden = false;
+      showBannerError();
       submitBtn.classList.remove('loading');
       submitBtn.disabled = false;
     }
@@ -213,10 +233,17 @@ export function initRSVP() {
     }
   }
 
+  function showBannerError(message) {
+    const textEl = document.getElementById('rsvp-error-text');
+    if (textEl && message) textEl.textContent = message;
+    errorBanner.hidden = false;
+  }
+
   function clearErrors() {
     form.querySelectorAll('.form-error').forEach(el => {
       el.textContent = '';
       el.classList.remove('active');
     });
+    errorBanner.hidden = true;
   }
 }
