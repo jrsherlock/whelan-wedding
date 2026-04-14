@@ -52,6 +52,11 @@ function doPost(e) {
       });
     }
 
+    // Validate-only mode — confirm name without recording an RSVP
+    if (String(p.action) === 'validate') {
+      return jsonResponse({ ok: true });
+    }
+
     // Append the RSVP row
     const attendance =
       p.attendance === 'accepts' ? 'Yes' :

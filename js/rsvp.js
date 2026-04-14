@@ -1,27 +1,29 @@
 /**
- * RSVP form: validation, dietary "Other" toggle, and Formspree submission.
+ * RSVP form: two-step flow with server-side name validation.
+ *
+ * Step 1: Guest enters name + email → "Find My Invitation" validates
+ *         the name against the server-side guest list.
+ * Step 2: If validated, the rest of the form (attendance, dietary,
+ *         message) slides in. Final submit records the RSVP.
  */
 
 // ─── Configuration ───
-// Google Apps Script web app that appends submissions to the RSVP Sheet.
-// Source: Apps Script project "Whelan Wedding RSVP Backend" in the dev's
-// Google account. Set to null to switch back to demo (no-network) mode.
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx9L8MiT_Maq6ByAdTmWQarEtoc4CF2KjKAO1Z3bkhxWOcL5VGNGfKNCey0PVg9OiCmNg/exec';
 
 export function initRSVP() {
   const form = document.getElementById('rsvp-form');
   if (!form) return;
 
+  const lookupBtn = document.getElementById('rsvp-lookup');
   const submitBtn = document.getElementById('rsvp-submit');
+  const step1 = document.getElementById('rsvp-step-1');
+  const step2 = document.getElementById('rsvp-step-2');
   const successEl = document.getElementById('rsvp-success');
   const errorBanner = document.getElementById('rsvp-error-banner');
   const otherCheck = document.getElementById('dietary-other-check');
   const otherField = document.getElementById('dietary-other-field');
 
   // ─── Clear browser autofill background ───
-  // When the browser pre-fills inputs, the autofill pseudo-class sticks
-  // and forces a UA background. Re-setting the value programmatically
-  // removes the autofill state while keeping the filled text.
   setTimeout(() => {
     form.querySelectorAll('input:-webkit-autofill').forEach(input => {
       const val = input.value;
@@ -50,7 +52,6 @@ export function initRSVP() {
         attendingDetails.classList.add('visible');
       } else {
         attendingDetails.classList.remove('visible');
-        // Clear guest count
         const countInput = document.getElementById('guest-count');
         if (countInput) countInput.value = '';
         const selectEl = document.getElementById('guest-count-select');
@@ -59,14 +60,12 @@ export function initRSVP() {
           selectEl.querySelector('.custom-select-value').textContent = 'Number of Guests';
           selectEl.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
         }
-        // Clear dietary checkboxes
         form.querySelectorAll('input[name="dietary"]').forEach(cb => { cb.checked = false; });
         if (otherField) {
           otherField.classList.remove('visible');
           const otherInput = otherField.querySelector('input');
           if (otherInput) otherInput.value = '';
         }
-        // Clear message
         const msg = document.getElementById('guest-message');
         if (msg) msg.value = '';
       }
@@ -98,7 +97,6 @@ export function initRSVP() {
       });
     });
 
-    // Close on outside click
     document.addEventListener('click', (e) => {
       if (!customSelect.contains(e.target)) {
         customSelect.classList.remove('open');
@@ -107,27 +105,86 @@ export function initRSVP() {
     });
   }
 
-  // ─── Bot detection: track when page loaded ───
+  // ─── Bot detection ───
   const loadedAt = Date.now();
 
-  // ─── Form submission ───
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Clear previous errors
+  // ─── Step 1: Find My Invitation ───
+  lookupBtn.addEventListener('click', async () => {
     clearErrors();
 
-    // Validate
-    if (!validate()) return;
+    // Client-side validation — name + email only
+    let valid = true;
+    const name = form.querySelector('#guest-name');
+    if (!name.value.trim()) {
+      showError('name-error', 'Please enter your name');
+      valid = false;
+    }
+    const email = form.querySelector('#guest-email');
+    if (!email.value.trim() || !email.value.includes('@')) {
+      showError('email-error', 'Please enter a valid email address');
+      valid = false;
+    }
+    if (!valid) return;
 
-    // Check honeypot
+    // Honeypot
     const honeypot = form.querySelector('[name="_gotcha"]');
     if (honeypot && honeypot.value) return;
 
-    // Reject suspiciously fast submissions (< 3 seconds)
+    // Bot timing check
     if (Date.now() - loadedAt < 3000) return;
 
-    // Show loading state
+    // Show loading
+    lookupBtn.classList.add('loading');
+    lookupBtn.disabled = true;
+
+    try {
+      const formData = new FormData();
+      formData.set('guest_name', name.value.trim());
+      formData.set('email', email.value.trim());
+      formData.set('action', 'validate');
+
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' },
+      });
+
+      const result = await response.json();
+
+      if (!result.ok) {
+        if (result.error === 'name_not_found') {
+          showError('name-error', result.message);
+          lookupBtn.classList.remove('loading');
+          lookupBtn.disabled = false;
+          return;
+        }
+        if (result.error === 'rate_limited') {
+          showBannerError(result.message);
+          lookupBtn.classList.remove('loading');
+          lookupBtn.disabled = false;
+          return;
+        }
+        throw new Error(result.error || 'Validation failed');
+      }
+
+      // Name validated — transition to step 2
+      lookupBtn.classList.remove('loading');
+      step1.querySelector('.form-actions').style.display = 'none';
+      step2.classList.add('visible');
+    } catch {
+      showBannerError();
+      lookupBtn.classList.remove('loading');
+      lookupBtn.disabled = false;
+    }
+  });
+
+  // ─── Step 2: Submit RSVP ───
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    if (!validateStep2()) return;
+
     submitBtn.classList.add('loading');
     submitBtn.disabled = true;
     errorBanner.hidden = true;
@@ -135,34 +192,32 @@ export function initRSVP() {
     try {
       const formData = new FormData(form);
 
-      // Combine dietary selections into a single field
+      // Combine dietary selections
       const dietaryValues = formData.getAll('dietary');
       formData.delete('dietary');
       if (dietaryValues.length > 0) {
         formData.set('dietary_restrictions', dietaryValues.join(', '));
       }
 
-      let result;
+      // Remove the validate action so backend records the RSVP
+      formData.delete('action');
 
       if (FORM_ENDPOINT) {
-        // Live mode — send to real backend
         const response = await fetch(FORM_ENDPOINT, {
           method: 'POST',
           body: formData,
           headers: { 'Accept': 'application/json' },
         });
 
-        result = await response.json();
+        const result = await response.json();
 
         if (!result.ok) {
-          // Name not on guest list — show inline error on the name field
           if (result.error === 'name_not_found') {
             showError('name-error', result.message);
             submitBtn.classList.remove('loading');
             submitBtn.disabled = false;
             return;
           }
-          // Rate limited — show banner with specific message
           if (result.error === 'rate_limited') {
             showBannerError(result.message);
             submitBtn.classList.remove('loading');
@@ -172,12 +227,11 @@ export function initRSVP() {
           throw new Error(result.error || 'Submission failed');
         }
       } else {
-        // Demo mode — simulate network delay then succeed
         await new Promise(resolve => setTimeout(resolve, 1200));
       }
 
       // Show success
-      form.querySelectorAll('.form-group, .form-actions, fieldset, .attending-details').forEach(el => {
+      form.querySelectorAll('#rsvp-step-1, #rsvp-step-2, .form-actions').forEach(el => {
         el.style.display = 'none';
       });
       successEl.hidden = false;
@@ -189,31 +243,15 @@ export function initRSVP() {
   });
 
   // ─── Validation ───
-  function validate() {
+  function validateStep2() {
     let valid = true;
 
-    // Guest name
-    const name = form.querySelector('#guest-name');
-    if (!name.value.trim()) {
-      showError('name-error', 'Please enter your name');
-      valid = false;
-    }
-
-    // Email
-    const email = form.querySelector('#guest-email');
-    if (!email.value.trim() || !email.value.includes('@')) {
-      showError('email-error', 'Please enter a valid email address');
-      valid = false;
-    }
-
-    // Attendance
     const attendance = form.querySelector('input[name="attendance"]:checked');
     if (!attendance) {
       showError('attendance-error', 'Please select your attendance');
       valid = false;
     }
 
-    // Guest count (only required when accepting)
     if (attendance && attendance.value === 'accepts') {
       const count = form.querySelector('#guest-count');
       if (!count.value) {

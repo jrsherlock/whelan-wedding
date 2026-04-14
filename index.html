@@ -480,23 +480,36 @@
             <input type="email" id="hp-email" name="_gotcha" tabindex="-1" autocomplete="off">
           </div>
 
-          <!-- Guest Names -->
-          <div class="form-group">
-            <div class="form-field">
-              <input type="text" id="guest-name" name="guest_name" placeholder=" " required autocomplete="name" maxlength="100">
-              <label for="guest-name">Guest Name(s)</label>
-              <span class="form-error" id="name-error"></span>
+          <!-- ── Step 1: Find invitation ── -->
+          <div id="rsvp-step-1">
+            <!-- Guest Names -->
+            <div class="form-group">
+              <div class="form-field">
+                <input type="text" id="guest-name" name="guest_name" placeholder=" " required autocomplete="name" maxlength="100">
+                <label for="guest-name">Guest Name(s)</label>
+                <span class="form-error" id="name-error"></span>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <div class="form-field">
+                <input type="email" id="guest-email" name="email" placeholder=" " required autocomplete="email" maxlength="120">
+                <label for="guest-email">Email Address</label>
+                <span class="form-error" id="email-error"></span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="rsvp-submit" id="rsvp-lookup">
+                <span class="submit-text">Find My Invitation</span>
+                <span class="submit-loading" aria-hidden="true"></span>
+              </button>
             </div>
           </div>
 
-          <!-- Email -->
-          <div class="form-group">
-            <div class="form-field">
-              <input type="email" id="guest-email" name="email" placeholder=" " required autocomplete="email" maxlength="120">
-              <label for="guest-email">Email Address</label>
-              <span class="form-error" id="email-error"></span>
-            </div>
-          </div>
+          <!-- ── Step 2: RSVP details (hidden until name validated) ── -->
+          <div id="rsvp-step-2" class="rsvp-step-2">
 
           <!-- Attendance -->
           <fieldset class="form-group attendance-group">
@@ -590,6 +603,8 @@
               <span class="submit-loading" aria-hidden="true"></span>
             </button>
           </div>
+
+          </div><!-- /rsvp-step-2 -->
 
           <!-- Success Message -->
           <div class="rsvp-success" id="rsvp-success" hidden>

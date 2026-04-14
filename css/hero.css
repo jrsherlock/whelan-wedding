@@ -129,7 +129,7 @@
 
 .hero-prelude {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 400;
   font-style: italic;
   letter-spacing: var(--tracking-widest);
@@ -139,6 +139,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-md);
+  text-shadow: 0 1px 6px rgba(4, 6, 15, 0.8);
 }
 
 .hero-prelude::before,
@@ -164,6 +165,7 @@
   line-height: 0.95;
   color: var(--color-cream);
   text-shadow:
+    0 2px 8px rgba(4, 6, 15, 0.7),
     0 0 30px rgba(233, 203, 125, 0.18),
     0 0 60px rgba(212, 176, 98, 0.08);
 }
@@ -203,39 +205,43 @@
   font-size: 1.4rem;
   opacity: 0.9;
   letter-spacing: 0.4em;
+  filter: drop-shadow(0 1px 4px rgba(4, 6, 15, 0.7));
 }
 
 /* ─── Date Plate ─── */
 .hero-date {
   font-family: var(--font-serif);
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: 400;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-cream-soft);
   margin-bottom: var(--space-sm);
+  text-shadow: 0 1px 6px rgba(4, 6, 15, 0.8);
 }
 
 .hero-date-numeric {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 400;
   letter-spacing: 0.45em;
   color: var(--color-gold);
   margin-bottom: var(--space-xl);
   padding-left: 0.45em; /* visual centering of tracking */
+  text-shadow: 0 1px 6px rgba(4, 6, 15, 0.8);
 }
 
 /* ─── Welcome Message ─── */
 .hero-message {
   font-family: var(--font-serif);
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: 300;
   font-style: italic;
   color: var(--color-cream-muted);
   max-width: 460px;
   margin: 0 auto var(--space-2xl);
   line-height: 1.7;
+  text-shadow: 0 1px 6px rgba(4, 6, 15, 0.8);
 }
 
 /* ─── Scroll Cue ─── */

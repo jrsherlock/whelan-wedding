@@ -59,7 +59,7 @@
 
 .event-time {
   font-family: var(--font-body);
-  font-size: 1.45rem;
+  font-size: 1.8rem;
   font-weight: 500;
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
@@ -69,7 +69,7 @@
 
 .event-name {
   font-family: var(--font-serif);
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -89,7 +89,7 @@
 
 .event-venue {
   font-family: var(--font-serif);
-  font-size: 1.7rem;
+  font-size: 2.1rem;
   font-style: italic;
   color: var(--color-cream-soft);
   margin-bottom: var(--space-xs);
@@ -97,7 +97,7 @@
 
 .event-address {
   font-family: var(--font-body);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-cream-dim);
@@ -106,10 +106,10 @@
 
 .event-note {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.9rem;
   font-style: italic;
   color: var(--color-cream-muted);
-  max-width: 280px;
+  max-width: 320px;
   margin: 0 auto;
   line-height: 1.6;
 }
