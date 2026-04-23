@@ -1,5 +1,5 @@
 /**
- * Whelan Wedding RSVP backend.
+ * Whalen Wedding RSVP backend.
  * Receives form POSTs from the wedding website and appends a row
  * to the "Responses" tab of the RSVP spreadsheet.
  *
@@ -82,7 +82,7 @@ function doPost(e) {
 }
 
 function doGet() {
-  return jsonResponse({ ok: true, service: 'whelan-wedding-rsvp' });
+  return jsonResponse({ ok: true, service: 'whalen-wedding-rsvp' });
 }
 
 // ─── Guest list loading & matching ───────────────────────────

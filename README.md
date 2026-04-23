@@ -1,6 +1,6 @@
-# Whelan Wedding
+# Whalen Wedding
 
-Wedding website for the Whelan celebration, hosted on GitHub Pages.
+Wedding website for the Whalen celebration, hosted on GitHub Pages.
 
 ## Features
 
